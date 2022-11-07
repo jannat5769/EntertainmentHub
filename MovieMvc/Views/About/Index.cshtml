@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="~/Content/css/about.css" rel="stylesheet" />
+
+<div class="hero-area">
+    <!-- Hero Post Slides -->
+    <div class="hero-post-slides owl-carousel">
+
+        @foreach (var item in Model)
+        {
+        <div class="single-slide bg-img bg-overlay" style="background-image: url(/Content/@item.PhotoURL);">
+            <!-- Blog Content -->
+            <div class="container-fluid h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-lg-9">
+                        <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                            <h2 data-animation="fadeInUp" data-delay="400ms">@item.Name (@item.ReleaseYear)</h2>
+                            <p data-animation="fadeInUp" data-delay="700ms">@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        </div>
+</div>
+
+<div class="about-section">
+
+    <h1><strogn>About Us  </strogn></h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam ut interdum ultricies.</p>
+
+</div>
+
+<h1 style="text-align:center">Our Team</h1>
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src="~/Content/images/User/rochita.jpg" alt="Sami" style="width:70%;margin-left: 16%;padding:50px">
+            <div class="container">
+                <div>
+                    <center>
+                        <h2>Rachita Dewanjee</h2>
+                        <p class="title" sytle="height: 25px;">
+                            ASP.Net Developer<br />
+                            Ahsanullah University Of Science & Technology<br />
+                            ID :180104029<br />
+                            rochita@gmail.com
+
+                        </p>
+                    </center>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="~/Content/images/User/jannat.jpg " alt="Hridoy" style="width:70%;margin-left: 16%; padding:50px">
+
+            <div class="container">
+                <div>
+                    <center>
+                        <h2>Jannatul Ferdous</h2>
+                        <p class="title" sytle="height: 25px;">
+                            ASP.Net Developer<br />
+                            Ahsanullah University Of Science & Technology<br />
+                            ID :180104028<br />
+                            jannatul@gmail.com
+
+                        </p>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

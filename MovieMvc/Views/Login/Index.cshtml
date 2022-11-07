@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="login_part section_padding ">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>New to our Website?</h2>
+                        <p>
+                            There are advances being made in science and technology
+                            everyday, and a good example of this is the
+                        </p>
+                        <a href="/signup/index" class="btn_3 btn btn-outline-primary">Create an Account</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="login_part_form">
+                    @if ((string)TempData["msg"] == "invalid")
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Email or Password is incorrect</strong>
+                        </div>
+                    }
+                    @if ((string)TempData["msg"] == "disable")
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Your Account has disabed.Please contact admin of this website</strong>
+                        </div>
+                    }
+                    @*<form method="post" enctype="multipart/form-data" asp-controller="Login" asp-action="Loginuser">*@
+                    @using (Html.BeginForm("Loginuser", "Login", FormMethod.Post))
+                    {
+                        <div class="login_part_form_iner">
+                            <h3>
+                                Welcome Back ! <br>
+                                Please Sign in now
+                            </h3>
+                            <div class="row contact_form">
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="email" class="form-control" ID="UserEmail" name="Email" value=""
+                                           placeholder="Email" required>
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="UserPassword" name="password" value=""
+                                           placeholder="Password" required>
+
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account d-flex align-items-center">
+                                        <input type="checkbox" id="f-option" name="selector">
+                                        <label for="f-option">Remember me</label>
+                                    </div>
+                                    <button type="submit" class="btn_3 btn btn-outline-primary" asp-controller="Login" asp-action="Loginuser">Submit</button>
+                                    <a class="lost_pass" href="#">forget password?</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        @*</form>*@
+                    }
+                    @*@using (Html.BeginForm("Loginuser", "Login", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Register</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="email" class="form-control" ID="UserEmail" name="Email" value=""
+                               placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="UserPassword" name="password" value=""
+                               placeholder="Password" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Login" />
+                    </div>
+                </div>
+            </div>
+
+        }*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

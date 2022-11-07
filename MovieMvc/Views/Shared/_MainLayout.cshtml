@@ -1,0 +1,340 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movie House</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <link href="~/Content/css/classy-nav.css" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="style.css">-->
+    <script src="~/Content/js/jquery/jquery-2.2.4.min.js"></script>
+    <link href="/Content/css/animate.css" rel="stylesheet" />
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="/Content/css/font-awesome.min.css" rel="stylesheet" />*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+    <link href="~/Content/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/css/nice-select.css" rel="stylesheet" />
+    <link href="~/Content/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Content/css/slick.css" rel="stylesheet" />
+    <link href="~/Content/css/slicknav.css" rel="stylesheet" />
+    <link href="~/Content/css/themify-icons.css" rel="stylesheet" />
+
+    <!-- Bootstrap js -->
+    <script src="~/Content/js/bootstrap/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap/bootstrap.min.js"></script>
+    @*<script src="~/Content/js/jquery-3.3.1.slim.min.js"></script>*@
+    <script src="~/Content/js/jquery.dataTables.min.js"></script>
+    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <style>
+        .classynav ul li.megamenu-item > a:after, .classynav ul li.has-down > a:after {
+            font-family: 'classyfonts';
+            content: "\e900";
+            font-size: 12px;
+            color: #000000;
+            padding-left: 5px;
+            /*   -webkit-transition-duration: 500ms;*/
+            transition-duration: 500ms;
+        }
+    </style>
+</head>
+<body>
+
+    @{var username = HttpContext.Current.Session["userName"]; }
+    @*@{var CurrentUser = HttpContext.Current.Session["AccountName"]; }*@
+    <header class="header-area wow fadeInDown" data-wow-delay="500ms">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="/home/index"><img src="~/Content/images/moviehouselogo.jpg" alt=""></a>
+                        </div>
+
+                        <!-- Search & Login Area -->
+                        <div class="search-login-area d-flex align-items-center">
+                            <!-- Top Search Area -->
+                            <form class="form-horizontal">
+                                <div class="top-search-area">
+                                    <input type="search" name="top-search" id="topSearch" placeholder="Search" required>
+
+                                    <button class="btn btn-primary " id="btnSubmit">submit</button>
+                                </div>
+                                </form>
+                                <!-- Login Area -->
+                                <div class="row">
+                                    <div class="login-area">
+                                        @if (username != null)
+                                        {
+                                            <a id="Logout" class="fa login-area ml-4" href="/home/Logout">Logout</a>
+                                        }
+
+                                        else
+                                        {
+                                            <a id="Login" class="fa login-area ml-4" href="/login/index">Login/Register</a>
+                                        }
+
+                                    </div>
+                                    @*<h1>  @Session["user"]</h1>*@
+                                    @if (username != null)
+                                    {
+                                        <a id="User" class="user" href="/profile/index" style="font-weight:bold;">@username</a>
+                                    }
+
+                                </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="/home/index">Home</a></li>
+                                    <li>
+                                        <a href="/MovieShow/index">Movies</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/MovieShow/index">All Category</a></li>
+                                            <li><a href="/MovieShow/index?Category=Hollywood">Hollywood</a></li>
+                                            <li><a href="/MovieShow/index?Category=Bollywood">Bollywood</a></li>
+                                        </ul>
+                                    </li>
+                                    <!--<li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="Default.aspx">Home</a></li>
+                                            <li><a href="post.html">Articles</a></li>
+                                            <li><a href="single-post.html">Single Articles</a></li>
+                                            <li><a href="game-review.html">Game Review</a></li>
+                                            <li><a href="single-game-review.html">Single Game Review</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="post.html">Articles</a>
+                                        <ul class="dropdown">
+                                            <li><a href="post.html">Articles</a></li>
+                                            <li><a href="single-post.html">Single Articles</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="single-game-review.html">Reviews</a>
+                                        <ul class="dropdown">
+                                            <li><a href="game-review.html">Game Review</a></li>
+                                            <li><a href="single-game-review.html">Single Game Review</a></li>
+                                        </ul>
+                                    </li>-->
+                                    <li><a href="/Reviews/index">Reviews</a></li>
+                                    <li><a href="/About/index">About us</a></li>
+                                    <li><a href="/Contact/index">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                        <!-- Top Social Info -->
+                        <!--<div class="top-social-info">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>-->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+
+
+    <footer class="footer-area">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-100-0">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="widget-title">
+                                <a href="/home/index"><img src="~/Content/images/moviehouselogo.jpg" alt=""></a>
+                            </div>
+                            <div class="widget-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam ut interdum ultricies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="widget-title">
+                                <h4>Movies</h4>
+                            </div>
+                            <div class="widget-content">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/MovieDetails/index?Mid=1001">Avengers: Endgame</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2005">Terminator Dark Fate</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2004">Joker</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2003">Black Panther</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2002">Bumblebee</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="500ms">
+                            <div class="widget-title">
+                                <h4>Usefull Links</h4>
+                            </div>
+                            <div class="widget-content">
+                                <nav>
+                                    <ul>
+                                        <li><a href="https://www.imdb.com/">IMDB</a></li>
+                                        <li><a href="https://www.rottentomatoes.com/">Rotten Tomattos</a></li>
+                                        <li><a href="https://www.rogerebert.com/">Roger Ebert</a></li>
+                                        <li><a href="https://www.theguardian.com">Guardian</a></li>
+                                        <li><a href="https://uk.movies.yahoo.com">Yahoo! Movies</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="700ms">
+                            <div class="widget-title">
+                                <h4>What’s new</h4>
+                            </div>
+                            <div class="widget-content">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/MovieDetails/index?Mid=1001">Avengers: Endgame</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2005">Terminator Dark Fate</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2004">Joker</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2003">Black Panther</a></li>
+                                        <li><a href="/MovieDetails/index?Mid=2002">Bumblebee</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-5">
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text">
+                            <a href="#">
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-7">
+                        <!-- Footer Nav -->
+                        <div class="footer-nav">
+                            <ul>
+                                <li><a href="/home/index">Home</a></li>
+                                <li><a href="/MovieShow/index">Movies</a></li>
+                                <li><a href="/Reviews/index">Reviews</a></li>
+                                <li><a href="/Contact/index">Contact</a></li>
+                                <li><a href="/About/index">About Us</a></li>
+                                <li><a href="/Admin/index">Admin</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- All Plugins js -->
+    <script src="~/Content/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/Content/js/active.js"></script>
+
+    <script src="~/Content/js/WebForms.js"></script>
+    <script src="~/Content/js/WebUIValidation.js"></script>
+    <script src="~/Content/js/MenuStandards.js"></script>
+    <script src="~/Content/js/GridView.js"></script>
+    <script src="~/Content/js/DetailsView.js"></script>
+    <script src="~/Content/js/TreeView.js"></script>
+    <script src="~/Content/js/WebParts.js"></script>
+    <script src="~/Content/js/Focus.js"></script>
+    @*<script src="~/Content/js/WebForms.js"></script>*@
+    @*<script src="~/Content/js/WebForms.js"></script>*@
+
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {
+            var valid = this.form.checkValidity();
+            $("#valid").html(valid);
+
+            if (valid) {
+                event.preventDefault();
+                var key = $("#topSearch").val();
+                location.href = "/search/index/?key=" + key+"";
+               
+            }
+
+
+        });
+    </script>
+</body>
+</html>

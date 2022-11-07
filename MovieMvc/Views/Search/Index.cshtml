@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <center>
+                        <h4 class="font-bold">Search Result</h4>
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+
+
+
+                <br>
+                <div class="col">
+
+
+                    <div>
+                        <table cellspacing="0" rules="all" class="table table-striped table-bordered" border="1" id="MainContent_GridView1" style="border-collapse:collapse;">
+                            <tbody>
+                                <tr>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+
+                                @if (ViewBag.Searchlist == null)
+                                {
+                                    <tr>
+                                        <th scope="col"><h2>Nothing Found</h2></th>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (var item in @ViewBag.Searchlist)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-lg-10">
+                                                           
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    <span id="MainContent_GridView1_MovieName_0" style="font-size:X-Large;font-weight:bold;">@item.Name</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    Description:
+                                                                    <span id="MainContent_GridView1_Label1_0" style="font-weight:bold;">@item.Description</span>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    Category:
+                                                                    <span id="MainContent_GridView1_Label2_0" style="font-weight:bold;">@item.Category</span>
+                                                                    &nbsp;| Release Year:
+                                                                    <span id="MainContent_GridView1_Label3_0" style="font-weight:bold;">@item.ReleaseYear</span>
+                                                                    &nbsp;| Rating:
+                                                                    <span id="MainContent_GridView1_Label4_0" style="font-weight:bold;">@item.Ratings</span>
+
+                                                                    &nbsp;| Studio Name:
+                                                                    <span id="MainContent_GridView1_Label8_0" style="font-weight:bold;">@item.StudioName</span>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                    No of View:
+                                                                    <span id="MainContent_GridView1_Label5_0" style="font-weight:bold;">@item.NoOfView</span>
+                                                                    &nbsp;| No of Review:
+                                                                    <span id="MainContent_GridView1_Label6_0" style="font-weight:bold;">@item.NoOfReview</span>
+                                                                    &nbsp;| Language:
+                                                                    <span id="MainContent_GridView1_Label7_0" style="font-weight:bold;">@item.Language</span>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <a id="MainContent_GridView1_lbtnCustomerName_0" href="/MovieDetails/index?Mid=@item.Mid">
+                                                                        View Details
+
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            PosterURL
+                                                            <img id="MainContent_GridView1_Image1_0" class="img-fluid p-2" src="~/Content/@item.PosterURL">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

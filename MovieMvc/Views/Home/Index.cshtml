@@ -1,0 +1,335 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    int movieslidercount = 0;
+    int count = 1;
+    int countone = 1;
+}
+
+<div class="hero-area">
+    <!-- Hero Post Slides -->
+
+    <div class="hero-post-slides owl-carousel">
+
+        @if (ViewBag.MovieSliderlist == null)
+        {
+            <h2>No Movies Available</h2>
+        }
+        else
+        {
+            foreach (var item in @ViewBag.MovieSliderlist)
+            {
+                <div class="single-slide bg-img bg-overlay" style="background-image: url(/Content/@item.PhotoURL);">
+                    <!-- Blog Content -->
+                    <div class="container-fluid h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12 col-lg-9">
+                                <div class="blog-content" data-animation="fadeInUp" data-delay="100ms">
+                                    <h2 data-animation="fadeInUp" data-delay="400ms">@item.Name (@item.ReleaseYear)</h2>
+                                    <p data-animation="fadeInUp" data-delay="700ms">@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
+<div class="games-area section-padding-100-0">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Single Games Area -->
+            <div class="col-12 col-md-4">
+                <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
+                    <img src="~/Content/images/mcu.jpg" width="210" alt="">
+                    <a href="/search/index?key=Marvel cinematic universe" class="btn egames-btn mt-30">View Movies</a>
+                </div>
+            </div>
+
+            <!-- Single Games Area -->
+            <div class="col-12 col-md-4">
+                <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
+                    <img src="~/Content/images/dc.jpg" width="210" alt="">
+                    <a href="/search/index?key=dc" class="btn egames-btn mt-30">View Movies</a>
+                </div>
+            </div>
+
+            <!-- Single Games Area -->
+            <div class="col-12 col-md-4">
+                <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
+                    <img src="~/Content/images/paramount.jpg" width="210" alt="">
+                    <a href="/search/index?key=Paramount Pictures" class="btn egames-btn mt-30">View Movies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="monthly-picks-area section-padding-100 bg-pattern">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="left-right-pattern" style="margin-left: 85px;margin-right: 85px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Title -->
+                <h2 class="section-title mb-70 wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;margin-left: 610px;">This Month’s Pick </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs wow fadeInUp" data-wow-delay="300ms" id="myTab" role="tablist" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;margin-left: 414px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="popular-tab" data-toggle="tab" href="#popular" role="tab" aria-controls="popular" aria-selected="true">Popular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="latest-tab" data-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="editor-tab" data-toggle="tab" href="#editor" role="tab" aria-controls="editor" aria-selected="false">Most Viwed</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content wow fadeInUp" data-wow-delay="500ms" id="myTabContent">
+        <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+            <!-- Popular Games Slideshow -->
+            <div class="popular-games-slideshow owl-carousel">
+
+                @if (ViewBag.PolularMovielist == null)
+                {
+                    <h2>No Movies Available</h2>
+                }
+                else
+                {
+                    foreach (var item in @ViewBag.PolularMovielist)
+                    {
+
+                        <div class="single-games-slide">
+                            <img src="/Content/@item.PosterURL" alt="">
+                            <div class="slide-text">
+                                <a href="/MovieDetails/index?Mid=@item.Mid" class="game-title">@item.Name</a>
+                                <div class="meta-data">
+                                    <a href="/MovieDetails/index?Mid=@item.Mid">Rating: @item.Ratings/10</a><br />
+                                    <br><a href="/MovieDetails/index?@item.Mid"> @item.MovieGenre </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+            <!-- Latest Games Slideshow -->
+            <div class="latest-games-slideshow owl-carousel">
+
+                @if (ViewBag.LatestMovielist == null)
+                {
+                    <h2>No Movies Available</h2>
+                }
+                else
+                {
+                    foreach (var item in @ViewBag.LatestMovielist)
+                    {
+
+                        <div class="single-games-slide">
+                            <img src="/Content/@item.PosterURL" alt="">
+                            <div class="slide-text">
+                                <a href="/MovieDetails/index?Mid=@item.Mid" class="game-title">@item.Name</a>
+                                <div class="meta-data">
+                                    <a href="/MovieDetails/index?Mid=@item.Mid">Rating: @item.Ratings/10</a><br />
+                                    <br><a href="/MovieDetails/index?@item.Mid"> @item.MovieGenre </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="editor" role="tabpanel" aria-labelledby="editor-tab">
+            <!-- Most Viwed Slideshow -->
+            <div class="editor-games-slideshow owl-carousel">
+
+                @if (ViewBag.MostViewMovielist == null)
+                {
+                    <h2>No Movies Available</h2>
+                }
+                else
+                {
+                    foreach (var item in @ViewBag.MostViewMovielist)
+                    {
+
+                        <div class="single-games-slide">
+                            <img src="/Content/@item.PosterURL" alt="">
+                            <div class="slide-text">
+                                <a href="/MovieDetails/index?Mid=@item.Mid" class="game-title">@item.Name</a>
+                                <div class="meta-data">
+                                    <a href="/MovieDetails/index?Mid=@item.Mid">Rating: @item.Ratings/10</a><br />
+                                    <br><a href="/MovieDetails/index?@item.Mid"> @item.MovieGenre </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="egames-video-area section-padding-100 bg-pattern2">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="egames-nav-btn">
+                    <div class="nav flex-column" id="video-tab" role="tablist" aria-orientation="vertical">
+                        @if (ViewBag.LatestMovielist == null)
+                        {
+                            <h2>No Movies Available</h2>
+                        }
+                        else
+                        {
+                            foreach (var item in @ViewBag.LatestMovielist)
+                            {
+                                if (count == 1)
+                                {
+                                    <a class="nav-link active" id="video" @item.Mid data-toggle="pill" href="#video-@item.Mid" role="tab" aria-controls="video-@item.Mid" aria-selected="true">
+                                        <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
+                                            <div class="video-thumbnail">
+                                                <img src="/content/@item.PosterURL" alt="">
+                                            </div>
+                                            <div class="video-text">
+                                                <p class="video-title mb-0">@item.Name</p>
+                                                <span></span>
+                                            </div>
+                                            <div class="video-rating">@item.Ratings/10</div>
+                                        </div>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link " id="video" @item.Mid data-toggle="pill" href="#video-@item.Mid" role="tab" aria-controls="video-@item.Mid" aria-selected="false">
+                                        <div class="single-video-widget d-flex wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
+                                            <div class="video-thumbnail">
+                                                <img src="/content/@item.PosterURL" alt="">
+                                            </div>
+                                            <div class="video-text">
+                                                <p class="video-title mb-0">@item.Name</p>
+                                                <span></span>
+                                            </div>
+                                            <div class="video-rating">@item.Ratings/10</div>
+                                        </div>
+                                    </a>
+                                }
+
+                                count = count + 1;
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-8">
+                <div class="tab-content" id="video-tabContent">
+
+                    @if (ViewBag.LatestMovielist == null)
+                    {
+                        <h2>No Movies Available</h2>
+                    }
+                    else
+                    {
+                        foreach (var item in @ViewBag.LatestMovielist)
+                        {
+                            if (countone == 1)
+                            {
+                                <div class="tab-pane fade active show" id="video-@item.Mid" role="tabpanel" aria-labelledby="video" @item.Mid>
+                                    <div class="video-playground bg-img" style="background-image: url(/content/@item.PhotoURL);">
+                                        <!-- Play Button -->
+                                        <div class="play-btn">
+                                            <a href="@item.TrailerURL" class="play-button"><img src="~/Content/images/core-img/play.png" alt=""></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="tab-pane fade" id="video-@item.Mid" role="tabpanel" aria-labelledby="video" @item.Mid>
+                                    <div class="video-playground bg-img" style="background-image: url(/content/@item.PhotoURL);">
+                                        <!-- Play Button -->
+                                        <div class="play-btn">
+                                            <a href="@item.TrailerURL" class="play-button"><img src="~/Content/images/core-img/play.png" alt=""></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            countone = countone + 1;
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="latest-articles-area section-padding-100-0 bg-img bg-pattern bg-fixed" style="background-image: url(/content/images/bg-img/5.jpg);">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-lg-10">
+                <div class="mb-100">
+                    <!-- Title -->
+                    <h2 class="section-title mb-70 wow fadeInUp" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">Latest Reviews</h2>
+
+
+                    @if (ViewBag.LatestReviewMovielist == null)
+                    {
+                        <h2>No Movies Available</h2>
+                    }
+                    else
+                    {
+                        foreach (var item in @ViewBag.LatestReviewMovielist)
+                        {
+                            <div class="single-articles-area style-2 d-flex flex-wrap mb-30 wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                                <div class="article-thumbnail">
+                                    <img src="~/Content/@item.PhotoURL" alt="">
+                                </div>
+                                <div class="article-content">
+                                    <a href="MovieDetails.aspx?Mid=2003" class="post-title">@item.MovieName (@item.ReleaseYear)</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">@item.ReviewDate</a>
+                                        <a href="#" class="post-comments">@item.UserName</a>
+                                        <a href="#" class="post-date">Rating: @item.Rating/10</a>
+                                    </div>
+                                    <p>@item.Message</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
